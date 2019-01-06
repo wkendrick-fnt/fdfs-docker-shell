@@ -11,6 +11,11 @@ nginx的配置文件目录为/usr/local/nginx/conf
 
 启动脚本 
 
-sh entrypoint.sh tracker      启动tracker
 
-sh entrypoint.sh storage      启动storage
+sh entrypoint.sh tracker      
+
+启动tracker
+
+sh entrypoint.sh storage      
+
+启动storage

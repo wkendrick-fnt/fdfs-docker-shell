@@ -39,15 +39,13 @@ if [ "$1" = 'tracker' ]; then
 
 	/usr/local/nginx/sbin/nginx-cache-purge
 
-	/etc/init.d/fdfs_trackerd start
+	sh /etc/init.d/fdfs_trackerd start
 
-	sleep 3s  #delay wait for pid file
+	sleep 3s
 
 	touch  "$TRACKER_LOG_FILE"
 	ln -sf /dev/stdout "$TRACKER_LOG_FILE"
 	
-	# tail -F --pid=`cat /fastdfs/tracker/data/fdfs_trackerd.pid`  /fastdfs/tracker/logs/trackerd.log
-	# wait `cat /fastdfs/tracker/data/fdfs_trackerd.pid`
 	tail -fn 100 /usr/local/nginx/logs/access.log /usr/local/nginx/logs/error.log
  fi
 
@@ -60,13 +58,12 @@ if [ "$1" = 'storage' ]; then
 
 	/usr/local/nginx/sbin/nginx-fastdfs-module
 
-	/etc/init.d/fdfs_storaged start
+	sh /etc/init.d/fdfs_storaged start
 
-	sleep 3s  #delay wait for pid file
+	sleep 3s
 
 	touch  "$STORAGE_LOG_FILE"
 	ln -sf /dev/stdout "$STORAGE_LOG_FILE"
-	# tail -F --pid=`cat /fastdfs/storage/data/fdfs_storaged.pid`  /fastdfs/storage/logs/storaged.log
-	#wait -n `cat /fastdfs/storage/data/fdfs_storaged.pid`
+
 	tail -fn 100 /usr/local/nginx/logs/access.log /usr/local/nginx/logs/error.log
 fi

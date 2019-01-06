@@ -27,7 +27,7 @@ if [ ! -d "/home/yuqing/fastdfs/cache/nginx/proxy_cache" ]; then
 fi 
 
 if [ "$1" = 'sh' ]; then
-	/bin/bash
+	/bin/sh
 fi
 
 if [ "$1" = 'tracker' ]; then
